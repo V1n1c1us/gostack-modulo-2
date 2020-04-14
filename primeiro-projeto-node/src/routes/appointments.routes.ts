@@ -6,6 +6,12 @@ import AppointmentsRepository from '../repositories/AppointmentsRepository';
 const appoitmentsRouter = Router();
 const appointmentsRepository = new AppointmentsRepository();
 
+appoitmentsRouter.get('/', (request, response) => {
+  const appointments = appointmentsRepository.getAll();
+
+  return response.json(appointments);
+});
+
 appoitmentsRouter.post('/', (request, response) => {
   const { provider, date } = request.body;
 
